@@ -11,7 +11,8 @@
   
 2.一些配置信息及第三方依赖统一管理:使用google支持的自定义config.gradle完成   
   
-3.项目日志框架库：logger,提供的功能：  
+3.项目日志框架库：logger,提供的功能：
+ '''
         3.1 线程的信息  
         3.2 类的信息  
         3.3 方法的信息  
@@ -20,7 +21,7 @@
         3.6 简洁的输出  
         3.7 从日志跳转到源码  
    优点：显示更加清晰人性化  
-  
+  '''
 4.项目网络请求框架:Retrofit(Okhttp+(Okhttp logging interceptor))+RxJava+RxAndroid+RxLifecycle  
      4.1 Retrofit 是一个 RESTful 的 HTTP 网络请求框架的封装。(网络请求的工作本质上是OkHttp完成，而Retrofit仅负责网络请求接口的封装)  
      4.2 RxJava+RxAndroid:函数式响应编程思想.提供很多常见操作符链式完成以数据流为核心，处理数据的输入，处理以及输出的模式。  
