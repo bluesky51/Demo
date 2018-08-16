@@ -1,0 +1,59 @@
+/**
+ * gradle支持自定义config.gradle,
+ * 在GoogleSamples中提到我们必须使用关键字ext(对应ExtraPropertitesExtension的实例)来定义动态属性
+ *
+ * 使用这种方式的好处是：当Android Support Repository有更新时，
+ * 可以直接在gradle文件中展现提示,又有提示,又能统一管理依赖版本号,一举两得
+ */
+/**注意：这里要在想使用这个config.gradle，我们要在project下的build.gradle中添加
+ * apply from : "config.gradle"
+ */
+ext {
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: '27.1.1',
+            applicationId    : 'com.sky.wang',
+            minSdkVersion    : 14,
+            targetSdkVersion : 28,
+            versionCode      : 1001,
+            versionName      : '1.0.1'
+    ]
+
+    dependencies = [
+            "appcompat-v7"                 : 'com.android.support:appcompat-v7:27.1.1',
+            "support-v4"                   : 'com.android.support:support-v4:27.1.1',
+            "junit"                        : 'junit:junit:4.12',
+
+            "rxandroid"                    : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+            "rxjava"                       : 'io.reactivex.rxjava2:rxjava:2.1.3',
+            "glide"                        : 'com.github.bumptech.glide:glide:4.7.1',
+            "okhttp"                       : 'com.squareup.okhttp3:okhttp:3.11.0',
+
+            "retrofit"                     : 'com.squareup.retrofit2:retrofit:2.3.0',
+            "adapter-rxjava2"              : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            "converter-gson"               : 'com.squareup.retrofit2:converter-gson:2.3.0',
+
+            "multiple-status-view"         : 'com.classic.common:multiple-status-view:1.5.1',//多种状态view
+            "dexter"                       : 'com.karumi:dexter:5.0.0',
+
+            //Rxlifecycle(使用RxJava当发布一个订阅后页面被finish,此时订阅的逻辑还没完成，容易引发内存泄漏问题)
+            "rxlifecycle"                  : 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
+            // If you want pre-written Activities and Fragments you can subclass as providers
+            "rxlifecycle-components"       : 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
+
+
+            "multidex"                     : 'com.android.support:multidex:1.0.1',
+
+            "BaseRecyclerViewAdapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7',
+            "loadinglibrary"               : 'com.wang.avi:library:2.1.3',
+
+            "eventbus"                     : 'org.greenrobot:eventbus:3.1.1',
+
+            "aspectjrt"                    : 'org.aspectj:aspectjrt:1.8.13',//AOP切面
+            "logger"                      : 'com.orhanobut:logger:2.2.0',//日志处理
+
+
+            "leakcanary-android"           : 'com.squareup.leakcanary:leakcanary-android:1.6.1',
+            "leakcanary-android-no-op"     : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+    ]
+}

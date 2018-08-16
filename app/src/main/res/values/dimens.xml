@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏文字大小-->
+    <dimen name="midTextFontSize">6sp</dimen>
+    <dimen name="leftTextFontSize">4sp</dimen>
+    <dimen name="rightTextFontSize">4sp</dimen>
+
+
+    <!--多状态view中的文字大小-->
+    <dimen name="custom_empty_view_text_size">16sp</dimen>
+    <dimen name="custom_error_view_text_size">16sp</dimen>
+    <dimen name="custom_loading_view_text_size">16sp</dimen>
+    <dimen name="custom_no_network_view_text_size">12sp</dimen>
+    <dimen name="custom_view_img_text_margin_top">15dp</dimen>
+</resources>

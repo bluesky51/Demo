@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimaryDark">@color/navigate_statusbar_bgcolor</item>
+
+    </style>
+
+
+    <style name="a">
+        <item name="android:listDivider">@color/red</item>
+    </style>
+
+</resources>

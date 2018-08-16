@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#ff0000</color>
+
+
+    <color name="custome_empty_text_color">#878787</color>
+    <color name="custome_error_text_color">#878787</color>
+    <color name="custome_loading_text_color">#878787</color>
+    <color name="custome_no_network_text_color">#878787</color>
+
+
+    <color name="title_bar_left_text_color">#ffffff</color>
+    <color name="title_bar_right_text_color">#ffffff</color>
+    <color name="title_bar_title_text_color">#ffffff</color>
+
+    <color name="navigate_statusbar_bgcolor">#3F51B5</color>
+</resources>

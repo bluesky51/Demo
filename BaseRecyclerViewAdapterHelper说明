@@ -1,0 +1,25 @@
+BaseRecyclerViewAdapterHelper是一个强大且灵活的RecyclerViewAdapter,那么它都能做什么呢?
+可以大量减少Adapter中的代码(对于多类型数据,不再需要写ViewHolder,只需要写多个bean类即可);
+可以定义一个多类型的 MultiesAdapter替代多个adapter使用;
+可以很轻松的添加RecyclerView加载动画;
+添加头部、添加尾部;
+支持下拉刷新、上拉加载更多(作为条目填充);
+支持分组(Section,可以看成是多类型条目的一种,有两种类型);
+支持自定义item类型;
+支持setEmptyView;
+可以添加item点击事件;
+支持子布局多个控件的点击事件;
+
+其配置和使用:
+在 build.gradle 的 repositories 添加:
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+然后增加dependencies
+
+dependencies {
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+}

@@ -1,0 +1,173 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    defaultConfig {
+        applicationId rootProject.ext.android["applicationId"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            moduleName = 'bsdiff'
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    afterEvaluate {
+
+        tasks.matching {
+
+            it.name.startsWith('dex')
+
+        }.each { dx ->
+            if (dx.additionalParameters == null) {
+                dx.additionalParameters = ['--multi-dex']
+            } else {
+                dx.additionalParameters += '--multi-dex'   // enable multidex
+            }
+            // optional
+            //dx.additionalParameters += ‘–main-dex-list=main-dex-list.txt’.toString()用于指定第一个包中必需包含的类，存放在 main-dex-list.txt中文件名可自行修改
+            //dx.additionalParameters += ‘–minimal-main-dex’最小化主包，与–main-dex-list配合使用，则主包中只含有文件中指定的类
+            dx.additionalParameters = ['--set-max-idx-number=65000']//用于指定每个dex包中最多的函数数量，多余此数量则自动进行分包
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('./key/sky.jks')
+            keyAlias 'sky'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+        debug {
+            storeFile file('./key/sky.jks')
+            keyAlias 'sky'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "int", "SERVER_HOST", "1"
+            //  不显示log日志 0
+            /**
+             * 是否去除无用的资源:对应testbuild_001→Minify Enabled
+             */
+            minifyEnabled false//true：启用混淆,false:不启用
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            //是否清理无用资源
+//            shrinkResources true
+            /**
+             * 是否支持zipAlign压缩
+             */
+            zipAlignEnabled true
+            /**
+             * 是否支持本地化整理:对应testbuild_001→Pseudo Locales Enaled
+             */
+            pseudoLocalesEnabled true
+        }
+        debug {
+            buildConfigField "int", "SERVER_HOST", "2"
+            //  全部显示log日志 6
+            minifyEnabled false//true：启用混淆,false:不启用
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android.dexOptions {
+        jumboMode true
+        javaMaxHeapSize "8g"
+
+    }
+    //放在libs目录中
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation rootProject.ext.dependencies["junit"]
+    //第三方依赖库
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["adapter-rxjava2"]
+    implementation rootProject.ext.dependencies["converter-gson"]
+    implementation rootProject.ext.dependencies["multiple-status-view"]
+    implementation rootProject.ext.dependencies["dexter"]
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-components"]
+    implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    implementation rootProject.ext.dependencies["loadinglibrary"]
+    implementation rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["logger"]
+    releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+    debugImplementation rootProject.ext.dependencies["leakcanary-android"]
+    implementation rootProject.ext.dependencies["aspectjrt"]
+}
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
+final def log = project.logger
+final def variants = project.android.applicationVariants
+
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
+        return;
+    }
+
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.8",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug "ajc args: " + Arrays.toString(args)
+
+        MessageHandler handler = new MessageHandler(true);
+        new Main().run(args, handler);
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break;
+                case IMessage.WARNING:
+                    log.warn message.message, message.thrown
+                    break;
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break;
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break;
+            }
+        }
+    }
+}
+
+
+
+
+
