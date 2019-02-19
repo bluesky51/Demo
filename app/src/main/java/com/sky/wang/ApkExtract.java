@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
 
+import com.blankj.utilcode.util.AppUtils;
+
 import java.io.File;
 
 /**
@@ -14,7 +16,7 @@ import java.io.File;
  */
 
 public class ApkExtract {
-     //提取手机安装的apk
+    //提取手机安装的apk
     public static String extract(Context context) {
         context = context.getApplicationContext();
         ApplicationInfo applicationInfo = context.getApplicationInfo();
@@ -34,5 +36,6 @@ public class ApkExtract {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         context.startActivity(intent);
+
     }
 }

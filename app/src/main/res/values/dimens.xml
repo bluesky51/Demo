@@ -12,4 +12,10 @@
     <dimen name="custom_loading_view_text_size">16sp</dimen>
     <dimen name="custom_no_network_view_text_size">12sp</dimen>
     <dimen name="custom_view_img_text_margin_top">15dp</dimen>
+
+
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_128">128dp</dimen>
 </resources>

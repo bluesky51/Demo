@@ -1,24 +1,20 @@
 package com.sky.wang;
 
+import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.support.multidex.MultiDex;
 import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.DiskLogStrategy;
 import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.LogStrategy;
-import com.orhanobut.logger.LogcatLogStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.sky.wang.app.AppStatusTracker;
-import com.sky.wang.app.BaseApplication;
 import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by bluesky on 2018/7/23.
  */
 
-public class App extends BaseApplication {
+public class App extends Application {
     private static App instance;
     private AppStatusTracker appStatusTracker;
 
@@ -65,10 +61,5 @@ public class App extends BaseApplication {
 
     public static App getInstance() {
         return instance;
-    }
-
-    @Override
-    public Intent needLoginIntent() {
-        return null;
     }
 }

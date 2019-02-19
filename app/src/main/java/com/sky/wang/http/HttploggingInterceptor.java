@@ -45,7 +45,7 @@ public class HttploggingInterceptor implements Interceptor {
             body = buffer.readString(charset);
         }
 
-        Logger.e("发送请求\nmethod：%s\nurl：%s\nheaders: %s\nbody：%s",
+        Logger.e("httpClient","发送请求\nmethod：%s\nurl：%s\nheaders: %s\nbody：%s",
                 request.method(), request.url(), request.headers(), body);
 
         long startNs = System.nanoTime();
@@ -72,7 +72,7 @@ public class HttploggingInterceptor implements Interceptor {
             rBody = buffer.clone().readString(charset);
         }
 
-        Logger.e("收到响应 %s%s\n请求url：%s\n请求body：%s\n响应body：%s",
+        Logger.e("httpClient","收到响应 %s%s\n请求url：%s\n请求body：%s\n响应body：%s",
                 response.code(), response.message(), response.request().url(), body, rBody);
 
         return response;

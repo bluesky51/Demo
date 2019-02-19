@@ -1,67 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/left_image"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerVertical="true"
-        android:minHeight="20dp"
-        android:minWidth="20dp"
-        android:layout_marginLeft="10dp"
-        android:src="@mipmap/ic_launcher" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:paddingTop="20dp">
 
-    <TextView
-        android:id="@+id/left_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/left_image"
-        android:gravity="center"
-        android:textColor="@color/title_bar_left_text_color"
-        android:minHeight="45dp"
-        android:text="left" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/mid_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:minHeight="45dp"
-        android:text="mid"
-        android:textColor="@color/title_bar_title_text_color"
-        android:textSize="17sp" />
+            <ImageView
+                android:id="@+id/left_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:src="@mipmap/ic_launcher" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:minHeight="45dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/left_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/left_image"
+                android:gravity="center_vertical"
+                android:minHeight="45dp"
+                android:text="left"
+                android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/right_text"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@+id/right_image"
-            android:gravity="center"
-            android:minHeight="45dp"
-            android:textColor="@color/title_bar_right_text_color"
-            android:text="right" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/right_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:minHeight="20dp"
-            android:minWidth="20dp"
-            android:src="@mipmap/ic_launcher" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/mid_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="mid"
+                android:minHeight="45dp"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/right_image"
+                android:gravity="center_vertical"
+                android:minHeight="45dp"
+                android:text="right"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/right_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+    </RelativeLayout>
 </merge>

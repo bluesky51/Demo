@@ -5,13 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="colorPrimaryDark">@color/navigate_statusbar_bgcolor</item>
-
     </style>
 
-
-    <style name="a">
-        <item name="android:listDivider">@color/red</item>
+    <style name="WideBtnStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#191919</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>

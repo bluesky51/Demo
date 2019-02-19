@@ -50,8 +50,14 @@ ext {
             "eventbus"                     : 'org.greenrobot:eventbus:3.1.1',
 
             "aspectjrt"                    : 'org.aspectj:aspectjrt:1.8.13',//AOP切面
-            "logger"                      : 'com.orhanobut:logger:2.2.0',//日志处理
+            "logger"                       : 'com.orhanobut:logger:2.2.0',//日志处理
 
+            "butterknife"                  : 'com.jakewharton:butterknife:8.8.1',
+            "butterknife-compiler"         : 'com.jakewharton:butterknife-compiler:8.8.1',
+
+            "utilcode"                     : 'com.blankj:utilcode:1.20.1',
+            "agentweb"                     : 'com.just.agentweb:agentweb:4.0.2',
+            "jsbridge"                     : 'com.github.lzyzsd:jsbridge:1.0.4',
 
             "leakcanary-android"           : 'com.squareup.leakcanary:leakcanary-android:1.6.1',
             "leakcanary-android-no-op"     : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'

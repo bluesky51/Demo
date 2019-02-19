@@ -306,3 +306,10 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
 -keep class com.sensorsdata.analytics.android.** { *; }
 #****************************DataBinding代码混淆结束******************************
+
+
+  -keep class com.just.agentweb.** {
+        *;
+    }
+    -dontwarn com.just.agentweb.**
+    -keepclassmembers class com.sky.wang.web.AndroidInterface{ *; }

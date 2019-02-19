@@ -5,4 +5,17 @@
     <string name="custom_error_tip_text">请求错误，稍后再试</string>
     <string name="custom_loading_tip_text">数据加载中,请稍后…</string>
     <string name="custom_no_network_tip_text">暂无网络，请稍后再试</string>
+
+
+    <string name="permission_rationale_message">You have rejected us to apply for authorization, please agree to authorization, otherwise the function can\'t be used normally!</string>
+    <string name="permission_denied_forever_message">We need some of the permissions you rejected or the system failed to apply failed, please manually set to the page authorize, otherwise the function can\'t be used normally!</string>
+
+
+    <!--Keyboard 相关-->
+    <string name="keyboard_hide_soft_input">Hide Soft Input</string>
+    <string name="keyboard_show_soft_input">Show Soft Input</string>
+    <string name="keyboard_toggle_soft_input">Toggle Soft Input</string>
+    <string name="keyboard_show_dialog">Show Dialog</string>
+    <string name="keyboard_close_dialog">Close Dialog</string>
+
 </resources>

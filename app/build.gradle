@@ -83,6 +83,7 @@ android {
         javaMaxHeapSize "8g"
 
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
     //放在libs目录中
     sourceSets {
         main {
@@ -93,6 +94,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -119,6 +121,12 @@ dependencies {
     releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
     debugImplementation rootProject.ext.dependencies["leakcanary-android"]
     implementation rootProject.ext.dependencies["aspectjrt"]
+    implementation rootProject.ext.dependencies["utilcode"]
+    implementation rootProject.ext.dependencies["agentweb"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation rootProject.ext.dependencies["jsbridge"]
+    implementation project(':promptlibrary')
 }
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
@@ -166,8 +174,3 @@ variants.all { variant ->
         }
     }
 }
-
-
-
-
-
